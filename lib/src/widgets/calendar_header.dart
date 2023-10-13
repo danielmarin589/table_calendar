@@ -59,7 +59,7 @@ class CalendarHeader extends StatelessWidget {
           Expanded(
             child: headerTitleBuilder?.call(context, focusedMonth) ??
                 GestureDetector(
-                  onTap: onHeaderTap,
+                  onTap: () {},
                   onLongPress: onHeaderLongPress,
                   child: Text(
                     text,
@@ -70,20 +70,23 @@ class CalendarHeader extends StatelessWidget {
                   ),
                 ),
           ),
-          if (headerStyle.formatButtonVisible &&
-              availableCalendarFormats.length > 1)
+          if (headerStyle.formatButtonVisible
+              //&&availableCalendarFormats.length > 1
+              )
             Padding(
-              padding: const EdgeInsets.only(left: 8.0),
-              child: FormatButton(
-                onTap: onFormatButtonTap,
-                availableCalendarFormats: availableCalendarFormats,
-                calendarFormat: calendarFormat,
-                decoration: headerStyle.formatButtonDecoration,
-                padding: headerStyle.formatButtonPadding,
-                textStyle: headerStyle.formatButtonTextStyle,
-                showsNextFormat: headerStyle.formatButtonShowsNext,
-              ),
-            ),
+                padding: const EdgeInsets.only(left: 8.0),
+                child: GestureDetector(
+                  child: FormatButton(
+                    onTap: onFormatButtonTap,
+                    availableCalendarFormats: availableCalendarFormats,
+                    calendarFormat: calendarFormat,
+                    decoration: headerStyle.formatButtonDecoration,
+                    padding: headerStyle.formatButtonPadding,
+                    textStyle: headerStyle.formatButtonTextStyle,
+                    showsNextFormat: headerStyle.formatButtonShowsNext,
+                  ),
+                  onTap: onHeaderTap,
+                )),
           if (headerStyle.rightChevronVisible)
             CustomIconButton(
               icon: headerStyle.rightChevronIcon,
