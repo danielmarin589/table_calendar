@@ -55,9 +55,10 @@ class FormatButton extends StatelessWidget {
           );
   }
 
-  String get _formatButtonText => showsNextFormat
-      ? availableCalendarFormats[_nextFormat()]!
-      : availableCalendarFormats[calendarFormat]!;
+  String get _formatButtonText => 'Astazi';
+  // showsNextFormat
+  //     ? availableCalendarFormats[_nextFormat()]!
+  //     : availableCalendarFormats[calendarFormat]!;
 
   CalendarFormat _nextFormat() {
     final formats = availableCalendarFormats.keys.toList();
